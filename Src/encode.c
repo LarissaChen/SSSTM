@@ -1,12 +1,13 @@
 #include "encode.h"
 #include "tim.h"
+int32_t code[5]={0};
 
 void Encode_Init(void)
 {
 	TIM_Encoder_InitTypeDef sEncoderConfig;
   sEncoderConfig.EncoderMode        =  TIM_ENCODERMODE_TI12;
   sEncoderConfig.IC1Polarity        = TIM_ICPOLARITY_RISING;   
-  sEncoderConfig.IC1Selection       = TIM_ICSELECTION_DIRECTTI;  
+  sEncoderConfig.IC1Selection       = TIM_ICSELECTION_DIRECTTI;
   sEncoderConfig.IC1Prescaler       = TIM_ICPSC_DIV1; 
   sEncoderConfig.IC1Filter          = 0;
   
@@ -47,7 +48,7 @@ void Encode_Init(void)
 
 
 }
-int  Encode1_value(void)
+static int  Encode1_value(void)
 {
 	uint16_t count;
 	
@@ -56,14 +57,14 @@ int  Encode1_value(void)
 }
 
 
-int Encode2_value(void)
+static int Encode2_value(void)
 {
 	uint16_t count;
 	
 	count = TIM1->CNT/4;//获取计数值
 	return count;
 }
-int Encode3_value(void)
+static int Encode3_value(void)
 {
    uint16_t count;
 	
@@ -72,7 +73,7 @@ return count;
 }	
 
 
-int Encode4_value(void)
+static int Encode4_value(void)
 {
 	uint16_t count;
 	
@@ -129,9 +130,10 @@ if(GPIO_Pin==GPIO_PIN_11)   //ENCODE4
 	
 		
 }
-
-
-
-
-
-
+void Encode_f5(void)
+{
+	code[1]=Encode1_value();
+	code[2]=Encode2_value();
+	code[3]=Encode3_value();
+	code[4]=Encode4_value();
+}

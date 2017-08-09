@@ -1,7 +1,7 @@
 [PreviousGenFiles]
-HeaderPath=C:/Users/尘游/Desktop/maple/maple_1/新建文件夹 (2)/step/Inc
+HeaderPath=E:/stm32program/ZYSTM/SSSTM/Inc
 HeaderFiles=stm32f4xx_it.h;stm32f4xx_hal_conf.h;main.h;gpio.h;can.h;tim.h;usart.h;
-SourcePath=C:/Users/尘游/Desktop/maple/maple_1/新建文件夹 (2)/step/Src
+SourcePath=E:/stm32program/ZYSTM/SSSTM/Src
 SourceFiles=stm32f4xx_it.h;stm32f4xx_hal_conf.h;main.h;stm32f4xx_it.c;stm32f4xx_hal_msp.c;main.c;gpio.h;can.h;tim.h;usart.h;gpio.c;can.c;tim.c;usart.c;
 
 [PreviousLibFiles]

@@ -65,6 +65,7 @@ void SystemClock_Config(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
+extern int32_t code[5];
 
 /* USER CODE END 0 */
 
@@ -126,8 +127,11 @@ int main(void)
   while (1)
   {
   /* USER CODE END WHILE */
-
-  /* USER CODE BEGIN 3 */
+	
+  //HAL_UART_Transmit(&huart1,"helloworld!\n",13,10);
+		/* USER CODE BEGIN 3 */
+	Encode_f5();
+	printf("1:%d,2:%d,3:%d,4:%d\n",code[1],code[2],code[3],code[4]);
 		
 	Step_Set(1,800);
 	Step_Set(2,800);
@@ -202,11 +206,12 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-int fputc(int ch,FILE *f)  
-{  
-  HAL_UART_Transmit(&huart5,(uint8_t*)ch,1,10);
-  return (ch);  
-}  
+int fputc(int ch,FILE *f)
+{
+    uint8_t temp[1]={ch};
+    HAL_UART_Transmit(&huart1 ,temp,1,2);
+    return 1;
+}
 /* USER CODE END 4 */
 
 /**
