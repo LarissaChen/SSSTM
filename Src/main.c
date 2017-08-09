@@ -127,9 +127,8 @@ int main(void)
   while (1)
   {
   /* USER CODE END WHILE */
-	
-  //HAL_UART_Transmit(&huart1,"helloworld!\n",13,10);
-		/* USER CODE BEGIN 3 */
+
+  /* USER CODE BEGIN 3 */
 	Encode_f5();
 	printf("1:%d,2:%d,3:%d,4:%d\n",code[1],code[2],code[3],code[4]);
 		
