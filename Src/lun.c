@@ -53,7 +53,7 @@ void Motor_Init(uint8_t motornum)//装载轮毂电机 根据需要修改
 	HAL_Delay(100);
 }
 
-HAL_StatusTypeDef Motor_Speed_Set(uint8_t motornum,uint16_t speed)//设定旋转速度
+HAL_StatusTypeDef Motor_Speed_Set(uint8_t motornum,int16_t speed)//设定旋转速度
 {
 	uint8_t high=speed & 0xFF00;
 	uint8_t low= speed & 0XFF;

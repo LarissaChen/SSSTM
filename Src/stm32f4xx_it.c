@@ -36,7 +36,7 @@
 #include "stm32f4xx_it.h"
 
 /* USER CODE BEGIN 0 */
-
+#include "debug.h"
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
@@ -50,6 +50,7 @@ extern TIM_HandleTypeDef htim11;
 extern TIM_HandleTypeDef htim12;
 extern TIM_HandleTypeDef htim13;
 extern TIM_HandleTypeDef htim14;
+extern UART_HandleTypeDef huart5;
 
 /******************************************************************************/
 /*            Cortex-M4 Processor Interruption and Exception Handlers         */ 
@@ -366,10 +367,32 @@ void TIM8_TRG_COM_TIM14_IRQHandler(void)
   /* USER CODE END TIM8_TRG_COM_TIM14_IRQn 1 */
 }
 
+/**
+* @brief This function handles UART5 global interrupt.
+*/
+void UART5_IRQHandler(void)
+{
+  /* USER CODE BEGIN UART5_IRQn 0 */
+
+  /* USER CODE END UART5_IRQn 0 */
+  HAL_UART_IRQHandler(&huart5);
+  /* USER CODE BEGIN UART5_IRQn 1 */
+
+  /* USER CODE END UART5_IRQn 1 */
+}
+
 /* USER CODE BEGIN 1 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)//更新中断的总成
 {
 	
+}
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//接收完毕后的中断总成
+{
+	if(huart==&huart5)
+	{
+		if(Debug_Handle()==HAL_OK)printf("Set OK\n");
+			else printf("Set Error!\n");
+	}
 }
 /* USER CODE END 1 */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

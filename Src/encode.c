@@ -48,38 +48,6 @@ void Encode_Init(void)
 
 
 }
-static int  Encode1_value(void)
-{
-	uint16_t count;
-	
-	count = TIM2->CNT/4;//获取计数值
-	return count;
-}
-
-
-static int Encode2_value(void)
-{
-	uint16_t count;
-	
-	count = TIM1->CNT/4;//获取计数值
-	return count;
-}
-static int Encode3_value(void)
-{
-   uint16_t count;
-	
-	count = TIM3->CNT/4;//获取计数值
-return count;
-}	
-
-
-static int Encode4_value(void)
-{
-	uint16_t count;
-	
-	count = TIM4->CNT/4;//获取计数值
-	return count;
-}	
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
@@ -132,8 +100,8 @@ if(GPIO_Pin==GPIO_PIN_11)   //ENCODE4
 }
 void Encode_f5(void)
 {
-	code[1]=Encode1_value();
-	code[2]=Encode2_value();
-	code[3]=Encode3_value();
-	code[4]=Encode4_value();
+	code[1]=TIM2->CNT/4;
+	code[2]=TIM1->CNT/4;
+	code[3]=TIM3->CNT/4;
+	code[4]=TIM4->CNT/4;
 }

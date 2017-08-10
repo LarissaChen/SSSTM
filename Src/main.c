@@ -47,6 +47,7 @@
 #include "lun.h"
 #include "wmdstep.h"
 #include "encode.h"
+#include "debug.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -114,9 +115,8 @@ int main(void)
 
   /* USER CODE BEGIN 2 */
 	Step_Init();
-	
-	
-	Encode_Init();          
+	Encode_Init();     
+	Debug_Init();
 	//编码器有四个读值函数 int Encode1_value(void); 返回值为实际脉冲个数
 	
 	

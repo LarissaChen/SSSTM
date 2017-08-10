@@ -7,7 +7,8 @@
 #include "usart.h"
 #include "gpio.h"
 
-
+HAL_StatusTypeDef Debug_Handle(void);
+HAL_StatusTypeDef Debug_Init(void);
 
 #endif
 

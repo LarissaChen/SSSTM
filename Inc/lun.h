@@ -14,6 +14,6 @@ HAL_StatusTypeDef Motor_Stop(uint8_t motornum);
 HAL_StatusTypeDef Motor_Speed_Enable(uint8_t motornum);
 HAL_StatusTypeDef Motor_Speed_Add(uint8_t motornum,double speed);
 void Motor_Init(uint8_t motornum);
-HAL_StatusTypeDef Motor_Speed_Set(uint8_t motornum,uint16_t speed);
+HAL_StatusTypeDef Motor_Speed_Set(uint8_t motornum,int16_t speed);
 HAL_StatusTypeDef Motor_Clear_Error(uint8_t motornum);
 #endif
