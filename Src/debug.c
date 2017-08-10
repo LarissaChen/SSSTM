@@ -8,6 +8,7 @@ static uint8_t buffer=0;
 0x01~0x08 选择对应电机
 0x10 对应电机转动
 0x11 对应电机反转
+0x12 显示所有编码器信息
 */
 HAL_StatusTypeDef Debug_Handle(void)
 {
@@ -21,6 +22,7 @@ HAL_StatusTypeDef Debug_Handle(void)
 		motornum=buffer;
 		return HAL_OK;
 	}
+	extern int32_t* code;
 	switch(buffer)
 	{
 		case 0x10:
@@ -29,6 +31,8 @@ HAL_StatusTypeDef Debug_Handle(void)
 		case 0x11:
 			if(motornum>4)return Step_Set(motornum-4,-400);//速度按需更改
 				else return Motor_Speed_Set(motornum,-50);
+		case 0x12:
+			printf("1:%d,2:%d,3:%d,4:%d\n",code[1],code[2],code[3],code[4]);break;
 		
 		
 	}

@@ -51,51 +51,22 @@ void Encode_Init(void)
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-	if(GPIO_Pin==GPIO_PIN_15)   //ENCODE1   z相归零
+	TIM_HandleTypeDef *tim;
+	switch(GPIO_Pin)
 	{
-		 TIM2->CNT = 0;
-			
-
+		case GPIO_PIN_15:
+			tim=&htim2;break;
+		case GPIO_PIN_12:
+			tim=&htim1;break;
+		case GPIO_PIN_3:
+			tim=&htim3;break;
+		case GPIO_PIN_11:
+			tim=&htim4;break;
 	}
-		
-		
-		
-		
-		
-	if(GPIO_Pin==GPIO_PIN_12)   //ENCODE2
-	{
-		 
-			 TIM1->CNT = 0;
-			
-
-	}
-		
-		
-		
-		
-		
-		
-if(GPIO_Pin==GPIO_PIN_3)   //ENCODE3
-	{
-		 
-			 TIM3->CNT = 0;
-		
-	}
-		
-		
-		
-		
-		
-		
-if(GPIO_Pin==GPIO_PIN_11)   //ENCODE4
-	{
-		
-			 TIM4->CNT = 0;
-
-	}
-		
-		
-	
+	tim->Instance->CNT=0;
+	//测试用语句 Z相到达时停掉该电机
+	HAL_TIM_Encoder_Stop(tim,TIM_CHANNEL_1);
+	HAL_TIM_Encoder_Stop(tim,TIM_CHANNEL_2);
 		
 }
 void Encode_f5(void)
