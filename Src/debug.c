@@ -27,10 +27,10 @@ HAL_StatusTypeDef Debug_Handle(void)
 	{
 		case 0x10:
 			if(motornum>4)return Step_Set(motornum-4,400);//速度按需更改
-				else return Motor_Speed_Set(motornum,50);
+				else return Motor_Speed_Set(motornum,25);
 		case 0x11:
 			if(motornum>4)return Step_Set(motornum-4,-400);//速度按需更改
-				else return Motor_Speed_Set(motornum,-50);
+				else return Motor_Speed_Set(motornum,-25);
 		case 0x12:
 			printf("1:%d,2:%d,3:%d,4:%d\n",code[1],code[2],code[3],code[4]);break;
 		
